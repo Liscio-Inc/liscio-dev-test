@@ -1,0 +1,18 @@
+# == Schema Information
+#
+# Table name: messages
+#
+#  id         :bigint           not null, primary key
+#  message    :string
+#  edited_at  :date
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+one:
+  message: MyString
+  edited_at: 2024-06-20
+
+two:
+  message: MyString
+  edited_at: 2024-06-20
