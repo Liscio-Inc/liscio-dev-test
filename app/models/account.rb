@@ -10,5 +10,10 @@
 #  updated_at   :datetime         not null
 #
 class Account < ApplicationRecord
+  validates :name, presence: true
+  validates :company_type, presence: true
+
+  enum company_type: {accounting_firm: "accounting firm", bookkeeper: "bookkeeper"}
+
   has_many :users
 end
