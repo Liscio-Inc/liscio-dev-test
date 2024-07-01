@@ -8,6 +8,6 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-class MessageParticipant < ApplicationRecord
+class MessageRecipient < ApplicationRecord
   belongs_to :users
 end
