@@ -11,7 +11,7 @@ gem "sprockets-rails"
 # Use sqlite3 as the database for Active Record
 # gem "sqlite3", "~> 1.4"
 # Using Postgres to match our current setup
-gem 'pg'
+gem "pg", "~> 1.5.6"
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", ">= 5.0"
@@ -31,7 +31,10 @@ gem "jbuilder"
 # Use Redis adapter to run Action Cable in production
 gem "redis", ">= 4.0.1"
 
-# Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
+# Serialize me Captain!
+gem 'active_model_serializers'
+
+# Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]  
 # gem "kredis"
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]

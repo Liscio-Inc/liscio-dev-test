@@ -8,11 +8,6 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-
-one:
-  name: MyString
-  account_id: MyString
-
-two:
-  name: MyString
-  account_id: MyString
+class UserSerializer < ActiveModel::Serializer
+  attributes :id, :name, :account_id
+end

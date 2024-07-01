@@ -9,13 +9,10 @@
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #
+class AccountSerializer < ActiveModel::Serializer
+  attributes :id, :created_at, :name, :company_type, :address, :users
 
-one:
-  name: MyString
-  address: MyString
-  company_type: MyString
-
-two:
-  name: MyString
-  address: MyString
-  company_type: MyString
+  def users
+    object.users
+  end
+end

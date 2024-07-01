@@ -9,10 +9,10 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-require "test_helper"
+class MessageSerializer < ActiveModel::Serializer
+  attributes :id, :message, :sender, :created_at, :message_recipients
 
-class MessageTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  def message_recipients
+    MessageRecipientSerializer.new(object.message_recipients)
+  end
 end
