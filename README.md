@@ -36,5 +36,5 @@ Annotation:
 
 * Ruby version
     * 3.1.6
-
-* ...
+* Postgres Version
+  * 1.5.6
