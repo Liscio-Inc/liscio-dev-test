@@ -22,13 +22,13 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_20_231931) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "message_participants", force: :cascade do |t|
+  create_table "message_recipients", force: :cascade do |t|
     t.bigint "message_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["message_id"], name: "index_message_participants_on_message_id"
-    t.index ["user_id"], name: "index_message_participants_on_user_id"
+    t.index ["message_id"], name: "index_message_recipients_on_message_id"
+    t.index ["user_id"], name: "index_message_recipients_on_user_id"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -48,8 +48,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_20_231931) do
     t.index ["account_id"], name: "index_users_on_account_id"
   end
 
-  add_foreign_key "message_participants", "messages"
-  add_foreign_key "message_participants", "users"
+  add_foreign_key "message_recipients", "messages"
+  add_foreign_key "message_recipients", "users"
   add_foreign_key "messages", "users", column: "sender_id"
   add_foreign_key "users", "accounts"
 end

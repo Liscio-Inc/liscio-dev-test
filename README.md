@@ -15,6 +15,10 @@ And also give space to ask questions around the culture and identity of Liscio
 ## Setup
 
 
+## Resources
+[]
+
+
 Things you may want to cover:
 
 * Ruby version
