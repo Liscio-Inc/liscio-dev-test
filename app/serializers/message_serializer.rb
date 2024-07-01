@@ -10,5 +10,9 @@
 #  updated_at :datetime         not null
 #
 class MessageSerializer < ActiveModel::Serializer
-  attributes :id, :message, :sender, :created_at
+  attributes :id, :message, :sender, :created_at, :message_recipients
+
+  def message_recipients
+
+  end
 end
