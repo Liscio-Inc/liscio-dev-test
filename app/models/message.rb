@@ -15,6 +15,9 @@ class Message < ApplicationRecord
   has_many :users, through: :message_recipients
 
   def message_participants
-    [user].push(message_recipients)
+  end
+
+  def sender
+    user
   end
 end

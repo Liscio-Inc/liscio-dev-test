@@ -9,5 +9,5 @@
 #  updated_at :datetime         not null
 #
 class UserSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id, :name, :account_id
 end

@@ -13,6 +13,6 @@ class MessageSerializer < ActiveModel::Serializer
   attributes :id, :message, :sender, :created_at, :message_recipients
 
   def message_recipients
-
+    MessageRecipientSerializer.new(object.message_recipients)
   end
 end
