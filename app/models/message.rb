@@ -9,6 +9,7 @@
 #  updated_at :datetime         not null
 #
 class Message < ApplicationRecord
+  belongs_to :user
   has_many :message_participants
   has_many :users, through: :message_participants
 end

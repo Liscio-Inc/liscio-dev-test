@@ -33,9 +33,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_20_231931) do
 
   create_table "messages", force: :cascade do |t|
     t.string "message", null: false
+    t.bigint "sender_id"
     t.date "edited_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["sender_id"], name: "index_messages_on_sender_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -48,5 +50,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_20_231931) do
 
   add_foreign_key "message_participants", "messages"
   add_foreign_key "message_participants", "users"
+  add_foreign_key "messages", "users", column: "sender_id"
   add_foreign_key "users", "accounts"
 end
