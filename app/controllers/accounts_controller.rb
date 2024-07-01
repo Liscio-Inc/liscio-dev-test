@@ -4,10 +4,13 @@ class AccountsController < ApplicationController
   # GET /accounts or /accounts.json
   def index
     @accounts = Account.all
+    render json: @accounts
   end
 
   # GET /accounts/1 or /accounts/1.json
   def show
+    @account = Account.find(params[:id])
+    render json: @account
   end
 
   # GET /accounts/new

@@ -6,6 +6,7 @@
   <% @accounts.each do |account| %>
     <%= render account %>
     <p>
+      <%= account.name %>
       <%= link_to "Show this account", account %>
     </p>
   <% end %>
