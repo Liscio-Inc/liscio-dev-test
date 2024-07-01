@@ -13,22 +13,28 @@ The test is two parts. Let's add a controller action, test it, and then discuss 
 And also give space to ask questions around the culture and identity of Liscio
 
 ## Setup
+Theoretically `bin/setup` will get you most of the way there assuming you're using a machine currently configured with Rails/Ruby. However, to get completely setup you might need a few things:
+
+1. Install [homebrew](https://brew.sh/) by running this command, this also installs xcode command line tools:
+```
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+** Note the instructions to add the brew shell env to your profile, this is very useful, don’t skip that.
 
 
 ## Resources
-[]
 
+Ruby Version Manager
+* [We currently use asdf](https://asdf-vm.com/) but feel free to use whatever you're comfortable with. Even if that's good ol' `ruby`
 
-Things you may want to cover:
+Serializers:
+* [Documentation](https://guides.rubyonrails.org/v4.2/active_model_basics.html)
+* [Gem used](https://github.com/rails-api/active_model_serializers)
+
+Annotation:
+[Annotate Gem](https://github.com/ctran/annotate_models)
 
 * Ruby version
-
-* System dependencies
-* Configuration
-* Database creation
-* Database initialization
-* How to run the test suite
-* Services (job queues, cache servers, search engines, etc.)
-* Deployment instructions
+    * 3.1.6
 
 * ...
