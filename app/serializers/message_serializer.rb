@@ -3,13 +3,13 @@
 # Table name: messages
 #
 #  id         :bigint           not null, primary key
-#  message    :string           not null
+#  text       :string           not null
 #  sender_id  :bigint
 #  edited_at  :date
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 class MessageSerializer < ActiveModel::Serializer
-  attributes :id, :message, :sender, :created_at
+  attributes :id, :text, :sender, :created_at
   has_many :message_recipients
 end
