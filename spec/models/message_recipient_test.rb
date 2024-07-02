@@ -1,16 +1,16 @@
 # == Schema Information
 #
-# Table name: users
+# Table name: message_recipients
 #
 #  id         :bigint           not null, primary key
-#  name       :string           not null
-#  account_id :bigint           not null
+#  message_id :bigint           not null
+#  user_id    :bigint           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-require "test_helper"
+require "rails_helper"
 
-class UserTest < ActiveSupport::TestCase
+class MessageRecipientTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

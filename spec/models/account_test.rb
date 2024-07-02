@@ -9,13 +9,10 @@
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #
+require "rails_helper"
 
-one:
-  name: MyString
-  address: MyString
-  company_type: MyString
-
-two:
-  name: MyString
-  address: MyString
-  company_type: MyString
+class AccountTest < ActiveSupport::TestCase
+  # test "the truth" do
+  #   assert true
+  # end
+end

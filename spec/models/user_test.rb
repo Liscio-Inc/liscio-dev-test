@@ -8,11 +8,10 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
+require "rails_helper"
 
-one:
-  name: MyString
-  account_id: MyString
-
-two:
-  name: MyString
-  account_id: MyString
+class UserTest < ActiveSupport::TestCase
+  # test "the truth" do
+  #   assert true
+  # end
+end
