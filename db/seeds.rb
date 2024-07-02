@@ -14,17 +14,17 @@ if Rails.env = "development"
 
 
   # Messages
-  message_1 = Message.new(user: user_bookie_1, message: "We've been discovered")
+  message_1 = Message.new(user: user_bookie_1, text: "We've been discovered")
   message_recipients = MessageRecipient.find_or_create_by!(user: user_bookie_2, message: message_1)
   message_recipients = MessageRecipient.find_or_create_by!(user: user_bookie_3, message: message_1)
   message_recipients = MessageRecipient.find_or_create_by!(user: user_bookie_4, message: message_1)
 
-  message_2 = Message.new(user: user_bookie_2, message: "Delete everything!")
+  message_2 = Message.new(user: user_bookie_2, text: "Delete everything!")
   message_recipients = MessageRecipient.find_or_create_by!(user: user_bookie_1, message: message_2)
   message_recipients = MessageRecipient.find_or_create_by!(user: user_bookie_3, message: message_2)
   message_recipients = MessageRecipient.find_or_create_by!(user: user_bookie_4, message: message_2)
 
-  message_3 = Message.new(user: user_bookie_3, message: "None of you are supposed to message ANY of this!!!1")
+  message_3 = Message.new(user: user_bookie_3, text: "None of you are supposed to message ANY of this!!!1")
   message_recipients = MessageRecipient.find_or_create_by!(user: user_bookie_2, message: message_3)
   message_recipients = MessageRecipient.find_or_create_by!(user: user_bookie_1, message: message_3)
   message_recipients = MessageRecipient.find_or_create_by!(user: user_bookie_4, message: message_3)

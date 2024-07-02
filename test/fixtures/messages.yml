@@ -3,7 +3,7 @@
 # Table name: messages
 #
 #  id         :bigint           not null, primary key
-#  message    :string           not null
+#  text       :string           not null
 #  sender_id  :bigint
 #  edited_at  :date
 #  created_at :datetime         not null
@@ -11,9 +11,9 @@
 #
 
 one:
-  message: MyString
+  text: MyString
   edited_at: 2024-06-20
 
 two:
-  message: MyString
+  text: MyString
   edited_at: 2024-06-20

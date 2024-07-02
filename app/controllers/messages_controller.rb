@@ -11,6 +11,8 @@ class MessagesController < ApplicationController
   # GET /messages/1 or /messages/1.json
   def show
     @message = Message.find(params[:id])
+
+    render json: @message
   end
 
   # GET /messages/new
@@ -28,11 +30,9 @@ class MessagesController < ApplicationController
 
     respond_to do |format|
       if @message.save
-        format.html { redirect_to message_url(@message), notice: "Message was successfully created." }
-        format.json { render :show, status: :created, location: @message }
+        render :show, status: :created, json: @message
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @message.errors, status: :unprocessable_entity }
+        render json: @message.errors, status: :unprocessable_entity
       end
     end
   end
@@ -68,6 +68,8 @@ class MessagesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def message_params
-      params.fetch(:message, {})
+      params.require(:message).permit(
+        :message, :sender_id
+      )
     end
 end
