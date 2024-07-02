@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-  skip_before_action :verify_authenticity_token, only: [:create]
+  skip_before_action :verify_authenticity_token
   before_action :set_message, only: %i[ show edit update destroy ]
 
   # GET /messages or /messages.json
@@ -34,12 +34,10 @@ class MessagesController < ApplicationController
   def create
     @message = Message.new(message_params)
 
-    respond_to do |format|
-      if @message.save
-        render :show, status: :created, json: @message
-      else
-        render json: @message.errors, status: :unprocessable_entity
-      end
+    if @message.save
+      render :show, status: :created, json: @message
+    else
+      render json: @message.errors, status: :unprocessable_entity
     end
   end
 
@@ -47,10 +45,7 @@ class MessagesController < ApplicationController
   def destroy
     @message.destroy!
 
-    respond_to do |format|
-      format.html { redirect_to messages_url, notice: "Message was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    render json: { head: :no_content }
   end
 
   private
@@ -61,8 +56,11 @@ class MessagesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def message_params
-      params.require(:message).permit(
-        :message, :sender_id
+      params.require(:text)
+      params.require(:sender_id)
+      params.permit(
+        :text,
+        :sender_id
       )
     end
 end
