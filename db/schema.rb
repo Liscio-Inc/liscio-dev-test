@@ -32,7 +32,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_20_231931) do
   end
 
   create_table "messages", force: :cascade do |t|
-    t.string "message", null: false
+    t.string "text", null: false
     t.bigint "sender_id"
     t.date "edited_at"
     t.datetime "created_at", null: false
