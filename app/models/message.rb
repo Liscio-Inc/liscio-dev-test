@@ -14,6 +14,9 @@ class Message < ApplicationRecord
   has_many :message_recipients, dependent: :destroy
   has_many :users, through: :message_recipients
 
+  validates :user, presence: true
+  validates :text, presence: true
+
   def message_participants
   end
 

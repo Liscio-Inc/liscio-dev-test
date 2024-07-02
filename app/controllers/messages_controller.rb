@@ -31,8 +31,20 @@ class MessagesController < ApplicationController
 
 
   # POST /messages or /messages.json
+  # Request format:
+  # {
+  #   text: body_of_text
+  #   sender_id: user_id_of_sender
+  #   message_recipients: [Array of User IDs]
+  # }
+  # ie
+  #   { "text":"this!","sender_id":"2", "message_recipients": "[3,4,5]"}
   def create
     @message = Message.new(message_params)
+
+    @message_participants = JSON.parse(message_recipients["message_recipients"]).each do |participant|
+      @message.message_recipients.new(user_id: participant)
+    end
 
     if @message.save
       render :show, status: :created, json: @message
@@ -45,7 +57,7 @@ class MessagesController < ApplicationController
   def destroy
     @message.destroy!
 
-    render json: { head: :no_content }
+    render json: { head: "Message deleted!" }
   end
 
   private
@@ -63,4 +75,9 @@ class MessagesController < ApplicationController
         :sender_id
       )
     end
+
+  def message_recipients
+    params.require(:message_recipients)
+    params.permit(:message_recipients)
+  end
 end
