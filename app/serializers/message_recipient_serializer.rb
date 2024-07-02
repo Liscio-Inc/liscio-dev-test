@@ -9,5 +9,11 @@
 #  updated_at :datetime         not null
 #
 class MessageRecipientSerializer < ActiveModel::Serializer
-  attributes :id, :user_id, :message_id
+  attributes :user
+
+  def user
+    {
+      "name": object.user.name
+    }
+  end
 end
