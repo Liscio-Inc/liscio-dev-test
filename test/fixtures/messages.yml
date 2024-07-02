@@ -11,9 +11,9 @@
 #
 
 one:
-  message: MyString
+  text: MyString
   edited_at: 2024-06-20
 
 two:
-  message: MyString
+  text: MyString
   edited_at: 2024-06-20
