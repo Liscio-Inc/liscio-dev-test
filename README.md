@@ -21,6 +21,21 @@ Theoretically `bin/setup` will get you most of the way there assuming you're usi
 ```
 ** Note the instructions to add the brew shell env to your profile, this is very useful, don’t skip that.
 
+## Interacting with the App
+
+Feel free to play around! But the thing we mostly want to see working as a good test is creating a message with recipients
+
+Use whatever tool is most comfortable, but here's a sample cURL command
+```
+curl -v \
+  -H "Accept: application/json" \
+  -H "Content-type: application/json" \
+  -X POST \
+  -d '{ "text":"this!","sender_id":"2", "message_recipients": "[3,4,5]"}' \
+  http://localhost:3000/messages
+
+```
+
 
 ## Resources
 
