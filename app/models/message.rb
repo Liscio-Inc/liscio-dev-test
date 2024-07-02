@@ -11,7 +11,7 @@
 #
 class Message < ApplicationRecord
   belongs_to :user, foreign_key: :sender_id
-  has_many :message_recipients
+  has_many :message_recipients, dependent: :destroy
   has_many :users, through: :message_recipients
 
   def message_participants
