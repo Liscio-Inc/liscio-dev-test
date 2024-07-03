@@ -21,6 +21,26 @@ Theoretically `bin/setup` will get you most of the way there assuming you're usi
 ```
 ** Note the instructions to add the brew shell env to your profile, this is very useful, don’t skip that.
 
+2. Use Brew to install Postgres
+   You’ve got some options with Postgres. If you want an all inclusive package, do the following:
+
+```
+brew install --cask postgres-unofficial
+# when the above completes, add it to the path...
+sudo mkdir -p /etc/paths.d && \
+   echo /Applications/Postgres.app/Contents/Versions/latest/bin | sudo tee /etc/paths.d/postgresapp
+
+brew install libpq postgresql@15
+brew services start postgresql@15
+
+# add libpq to your path for ZSH
+echo 'export PATH="/opt/homebrew/opt/libpq/bin:$PATH"' >> ~/.zshrc
+
+# make sure Postgres is running
+pg_isready
+```
+
+
 ## Interacting with the App
 
 Feel free to play around! But the thing we mostly want to see working as a good test is creating a message with recipients
