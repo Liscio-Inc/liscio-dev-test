@@ -13,4 +13,5 @@ class User < ApplicationRecord
   validates :account_id, presence: true
 
   belongs_to :account
+  has_many :messages, dependent: :destroy
 end

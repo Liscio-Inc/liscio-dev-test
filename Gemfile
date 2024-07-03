@@ -43,7 +43,6 @@ gem 'active_model_serializers'
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 
-# Annote all the things
 group :development do
   gem 'annotate'
 end
@@ -57,6 +56,8 @@ gem "bootsnap", require: false
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ]
+  gem "factory_bot_rails", "6.2.0"
+  gem "rspec-rails"
 end
 
 group :development do
@@ -76,4 +77,5 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
+  gem "shoulda-matchers"
 end

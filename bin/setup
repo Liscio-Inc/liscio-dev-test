@@ -26,7 +26,7 @@ FileUtils.chdir APP_ROOT do
   system! 'bin/rails db:reset RAILS_ENV=development DISABLE_DATABASE_ENVIRONMENT_CHECK=1'
 
   puts "\n== Loading Seed Data =="
-  system! 'bin/rails db:seed'
+  system! 'bin/rails db:seed RAILS_ENV=development DISABLE_DATABASE_ENVIRONMENT_CHECK=1'
 
   puts "\n== Removing old logs and tempfiles =="
   system! 'bin/rails log:clear tmp:clear'

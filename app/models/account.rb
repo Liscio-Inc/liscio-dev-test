@@ -15,5 +15,5 @@ class Account < ApplicationRecord
 
   enum company_type: {accounting_firm: "accounting firm", bookkeeper: "bookkeeper"}
 
-  has_many :users
+  has_many :users, dependent: :destroy
 end

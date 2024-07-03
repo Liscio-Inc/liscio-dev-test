@@ -1,4 +1,5 @@
 class MessagesController < ApplicationController
+  skip_before_action :verify_authenticity_token
   before_action :set_message, only: %i[ show edit update destroy ]
 
   # GET /messages or /messages.json
@@ -18,35 +19,41 @@ class MessagesController < ApplicationController
   # GET /messages/new
   def new
     @message = Message.new
+
+    render json: @message
   end
 
   # GET /messages/1/edit
   def edit
   end
 
+  # PATCH/PUT /messages/1 or /messages/1.json
+  def update
+  end
+
+
   # POST /messages or /messages.json
+  # Request format:
+  # {
+  #   text: body_of_text
+  #   sender_id: user_id_of_sender
+  #   message_recipients: [Array of User IDs]
+  # }
+  # ie
+  #   { "text":"this!","sender_id":"2", "message_recipients": "[3,4,5]"}
   def create
     @message = Message.new(message_params)
 
-    respond_to do |format|
-      if @message.save
-        render :show, status: :created, json: @message
-      else
-        render json: @message.errors, status: :unprocessable_entity
-      end
+    @message_participants = message_recipients.each do |participant|
+      @message.message_recipients.new(user_id: participant)
     end
-  end
 
-  # PATCH/PUT /messages/1 or /messages/1.json
-  def update
-    respond_to do |format|
-      if @message.update(message_params)
-        format.html { redirect_to message_url(@message), notice: "Message was successfully updated." }
-        format.json { render :show, status: :ok, location: @message }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @message.errors, status: :unprocessable_entity }
-      end
+    # Not leaving as a model validation for now, checking if there are recipients to start but there might be a
+    # case for no recipients long term.
+    if message_recipients.any? && @message.save
+      render :show, status: :created, json: @message
+    else
+      render json: @message.errors, status: :unprocessable_entity
     end
   end
 
@@ -54,10 +61,7 @@ class MessagesController < ApplicationController
   def destroy
     @message.destroy!
 
-    respond_to do |format|
-      format.html { redirect_to messages_url, notice: "Message was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    render json: { head: "Message deleted!" }
   end
 
   private
@@ -68,8 +72,28 @@ class MessagesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def message_params
-      params.require(:message).permit(
-        :message, :sender_id
+      params.require(:text)
+      params.require(:sender_id)
+      params.permit(
+        :text,
+        :sender_id
       )
     end
+
+  def message_recipients
+    message_recipients = permitted_message_recipients["message_recipients"]
+
+    if message_recipients.is_a?(Array)
+     message_recipients
+   elsif message_recipients.is_a?(String) && JSON.parse(message_recipients).is_a?(Array)
+     JSON.parse(message_recipients)
+   else
+     []
+   end
+  end
+
+  def permitted_message_recipients
+    params.require(:message_recipients)
+    params.permit(:message_recipients, { :message_recipients => [] }, { :message_recipients => {} })
+  end
 end
