@@ -21,25 +21,61 @@ Theoretically `bin/setup` will get you most of the way there assuming you're usi
 ```
 ** Note the instructions to add the brew shell env to your profile, this is very useful, don’t skip that.
 
-2. Use Brew to install Postgres
+2. Use Homebrew to install your Ruby Version manager (if you don't already have one)
+
+
+[asdf](https://asdf-vm.com/guide/getting-started.html):
+```
+brew install asdf
+```
+
+[Ensure the plugin for asdf](https://github.com/asdf-vm/asdf-ruby) is installed
+```
+asdf plugin add ruby
+```
+
+Then install Ruby 3.1.6
+```
+asdf install ruby 3.1.6
+asdf global ruby 3.1.6
+```
+3. Get ready to install postgres
+```
+brew install \
+  libyaml \
+  openssl@3 \
+  gmp
+```
+
+
+4. Use Brew to install Postgres
    You’ve got some options with Postgres. If you want an all inclusive package, do the following:
 
 ```
 brew install --cask postgres-unofficial
-# when the above completes, add it to the path...
 sudo mkdir -p /etc/paths.d && \
    echo /Applications/Postgres.app/Contents/Versions/latest/bin | sudo tee /etc/paths.d/postgresapp
 
 brew install libpq postgresql@15
 brew services start postgresql@15
 
-# add libpq to your path for ZSH
+# add libpq to your path for ZSH - sometimes it is required in a different bash profile
 echo 'export PATH="/opt/homebrew/opt/libpq/bin:$PATH"' >> ~/.zshrc
 
 # make sure Postgres is running
 pg_isready
 ```
 
+5. If you haven't already, clone this repo into a folder of your choice
+6. Run the setup from the repo directory
+```
+bin/setup
+```
+
+7. Run rails (Hopefully!)
+```
+rails s
+```
 
 ## Interacting with the App
 
@@ -64,8 +100,6 @@ curl -v \
 
 ```
 
-
-
 ## Resources
 
 Ruby Version Manager
@@ -80,6 +114,9 @@ Annotation:
 
 Various Rails/Dev Resources
 * [rspec cheat sheet](https://www.rubypigeon.com/posts/rspec-expectations-cheat-sheet/)
+
+* Undoing some of the installing you have done:
+  * [Uninstall homebrew packages](https://mac.install.guide/homebrew/7)
 
 
 ### Misc Notes:
