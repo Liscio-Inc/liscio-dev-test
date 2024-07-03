@@ -48,7 +48,9 @@ class MessagesController < ApplicationController
       @message.message_recipients.new(user_id: participant)
     end
 
-    if @message.save
+    # Not leaving as a model validation for now, checking if there are recipients to start but there might be a
+    # case for no recipients long term.
+    if message_recipients.any? && @message.save
       render :show, status: :created, json: @message
     else
       render json: @message.errors, status: :unprocessable_entity
@@ -83,10 +85,10 @@ class MessagesController < ApplicationController
 
     if message_recipients.is_a?(Array)
      message_recipients
-   elsif message_recipients.is_a?(String)
+   elsif message_recipients.is_a?(String) && JSON.parse(message_recipients).is_a?(Array)
      JSON.parse(message_recipients)
    else
-     render json: { error: "Invalid Message Recipients" }, status: :unprocessable_entity
+     []
    end
   end
 

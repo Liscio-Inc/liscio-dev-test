@@ -72,7 +72,6 @@ RSpec.describe "MessagesControllers", type: :request do
         message_recipients: [user_receiver_2.id, user_receiver.id]
       }
     end
-
     let(:params_string) do
       {
         text: sample_message,
@@ -80,8 +79,20 @@ RSpec.describe "MessagesControllers", type: :request do
         message_recipients: "[#{user_receiver_2.id}, #{user_receiver.id}]"
       }
     end
+    let(:params_wrong) do
+      {
+        texts: sample_message,
+      }
+    end
+    let(:params_recipients_wrong) do
+      {
+        text: sample_message,
+        sender_id: message_sender.id,
+        message_recipients: "23243"
+      }
+    end
 
-    it "returns a success when called with messages" do
+    it "returns a success when called with messages as array" do
       post url, params: params
 
       expect(response).to have_http_status(:success)
@@ -91,6 +102,30 @@ RSpec.describe "MessagesControllers", type: :request do
       expect(response_body["sender"]["name"]).to eq(message_sender.name)
       expect(response_body["text"]).to eq(sample_message)
       expect(response_body["message_recipients"]).to contain_exactly({"user"=>{"name"=>user_receiver_2.name}}, {"user"=>{"name"=>user_receiver.name}})
+    end
+
+    it "returns a success when called with messages as string" do
+      post url, params: params_string
+
+      expect(response).to have_http_status(:success)
+
+      response_body = JSON.parse(response.body)
+
+      expect(response_body["sender"]["name"]).to eq(message_sender.name)
+      expect(response_body["text"]).to eq(sample_message)
+      expect(response_body["message_recipients"]).to contain_exactly({"user"=>{"name"=>user_receiver_2.name}}, {"user"=>{"name"=>user_receiver.name}})
+    end
+
+    it "returns a unprocessable entity when params are wrong" do
+      post url, params: params_wrong
+
+      expect(response).to_not be_successful
+    end
+
+    it "returns a unprocessable entity when recipient params are wrong" do
+      post url, params: params_recipients_wrong
+
+      expect(response).to_not be_successful
     end
   end
 end
