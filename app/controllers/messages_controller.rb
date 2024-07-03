@@ -66,19 +66,19 @@ class MessagesController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_message
-      @message = Message.find(params[:id])
-    end
+  def set_message
+    @message = Message.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def message_params
-      params.require(:text)
-      params.require(:sender_id)
-      params.permit(
-        :text,
-        :sender_id
-      )
-    end
+  # Only allow a list of trusted parameters through.
+  def message_params
+    params.require(:text)
+    params.require(:sender_id)
+    params.permit(
+      :text,
+      :sender_id
+    )
+  end
 
   def message_recipients
     message_recipients = permitted_message_recipients["message_recipients"]
