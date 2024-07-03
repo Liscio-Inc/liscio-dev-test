@@ -25,7 +25,15 @@ Theoretically `bin/setup` will get you most of the way there assuming you're usi
 
 Feel free to play around! But the thing we mostly want to see working as a good test is creating a message with recipients
 
-Use whatever tool is most comfortable, but here's a sample cURL command
+Use whatever tool is most comfortable, but here's a sample cURL command for viewing all messages:
+```
+curl -v \
+  -H "Accept: application/json" \
+  -H "Content-type: application/json" \
+  http://localhost:3000/messages
+```
+
+Sample Command for creating a message:
 ```
 curl -v \
   -H "Accept: application/json" \
@@ -35,6 +43,7 @@ curl -v \
   http://localhost:3000/messages
 
 ```
+
 
 
 ## Resources
@@ -49,6 +58,11 @@ Serializers:
 Annotation:
 [Annotate Gem](https://github.com/ctran/annotate_models)
 
+Various Rails/Dev Resources
+* [rspec cheat sheet](https://www.rubypigeon.com/posts/rspec-expectations-cheat-sheet/)
+
+
+### Misc Notes:
 * Ruby version
     * 3.1.6
 * Postgres Version
