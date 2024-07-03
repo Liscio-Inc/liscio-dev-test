@@ -13,8 +13,11 @@ RSpec.describe "MessagesControllers", type: :request do
       get url
 
       expect(response).to have_http_status(:success)
-      expect(JSON.parse(response.body).last["sender"]["name"]).to eq(message_sender.name)
-      expect(JSON.parse(response.body).last["text"]).to eq(message_one.text)
+
+      response_body = JSON.parse(response.body)
+
+      expect(response_body.last["sender"]["name"]).to eq(message_sender.name)
+      expect(response_body.last["text"]).to eq(message_one.text)
     end
   end
 
@@ -25,8 +28,11 @@ RSpec.describe "MessagesControllers", type: :request do
       get url
 
       expect(response).to have_http_status(:success)
-      expect(JSON.parse(response.body)["sender"]["name"]).to eq(message_sender.name)
-      expect(JSON.parse(response.body)["text"]).to eq(message_one.text)
+
+      response_body = JSON.parse(response.body)
+
+      expect(response_body["sender"]["name"]).to eq(message_sender.name)
+      expect(response_body["text"]).to eq(message_one.text)
     end
   end
 
@@ -52,6 +58,39 @@ RSpec.describe "MessagesControllers", type: :request do
 
       expect(response).to have_http_status(:success)
       expect(Message.where(id: current_message_id)).to be_empty
+    end
+  end
+
+  describe "POST /create" do
+    let(:url) { '/messages/' }
+    let!(:user_receiver_2) { FactoryBot.create(:user, name: "Hicks") }
+    let(:sample_message) { "hey y\'all, not sure how I feel about this trip to LV-426" }
+    let(:params) do
+      {
+        text: sample_message,
+        sender_id: message_sender.id,
+        message_recipients: [user_receiver_2.id, user_receiver.id]
+      }
+    end
+
+    let(:params_string) do
+      {
+        text: sample_message,
+        sender_id: message_sender.id,
+        message_recipients: "[#{user_receiver_2.id}, #{user_receiver.id}]"
+      }
+    end
+
+    it "returns a success when called with messages" do
+      post url, params: params
+
+      expect(response).to have_http_status(:success)
+
+      response_body = JSON.parse(response.body)
+
+      expect(response_body["sender"]["name"]).to eq(message_sender.name)
+      expect(response_body["text"]).to eq(sample_message)
+      expect(response_body["message_recipients"]).to contain_exactly({"user"=>{"name"=>user_receiver_2.name}}, {"user"=>{"name"=>user_receiver.name}})
     end
   end
 end

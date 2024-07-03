@@ -44,7 +44,7 @@ class MessagesController < ApplicationController
   def create
     @message = Message.new(message_params)
 
-    @message_participants = JSON.parse(message_recipients["message_recipients"]).each do |participant|
+    @message_participants = message_recipients.each do |participant|
       @message.message_recipients.new(user_id: participant)
     end
 
@@ -79,7 +79,19 @@ class MessagesController < ApplicationController
     end
 
   def message_recipients
+    message_recipients = permitted_message_recipients["message_recipients"]
+
+    if message_recipients.is_a?(Array)
+     message_recipients
+   elsif message_recipients.is_a?(String)
+     JSON.parse(message_recipients)
+   else
+     render json: { error: "Invalid Message Recipients" }, status: :unprocessable_entity
+   end
+  end
+
+  def permitted_message_recipients
     params.require(:message_recipients)
-    params.permit(:message_recipients)
+    params.permit(:message_recipients, { :message_recipients => [] }, { :message_recipients => {} })
   end
 end
