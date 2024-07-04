@@ -19,7 +19,7 @@ actual implementation, it is meant to be a much simpler version of it (something
 and exploring in advance, although it should not be entirely necessary. 
  [Public View Only Miro Board](https://miro.com/app/board/uXjVK9cbZxE=/?share_link_id=598759584903)
 
-![](app/assets/images/Liscio Full Stack Dev Test.jpg)
+![](app/assets/images/LiscioFullStackDevTest.jpg)
 
 The exercise is two parts. Let's add some (hopefully) simple functionality, test it, and then have a conversation to 
 what it would take to extend messages long term.
