@@ -29,8 +29,7 @@ It is also important to give you space to ask questions around the culture and i
 Format:
 * 20 Minutes pairing
 * 20 Minutes discussion
-* 10 minutes of questions (these can also be peppered into your pairing session, by all means use the time to get to 
-* know us!)
+* 10 minutes of questions (these can also be peppered into your pairing session, by all means use the time to get to know us!)
 
 ## Setup
 Theoretically `bin/setup` will get you most of the way there assuming you're using a machine currently configured with 
