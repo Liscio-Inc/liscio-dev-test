@@ -22,17 +22,18 @@ and exploring in advance, although it should not be entirely necessary.
 ![](app/assets/images/LiscioFullStackDevTest.jpg)
 
 The exercise is two parts. Let's add some (hopefully) simple functionality, test it, and then have a conversation to 
-what it would take to extend messages long term.
+see what it would take to extend messages long term.
 
-It is also important to give space to ask questions around the culture and identity of Liscio
+It is also important to give you space to ask questions around the culture and identity of Liscio as a company. 
 
 Format:
 * 20 Minutes pairing
 * 20 Minutes discussion
-* 10 minutes of questions (these can also be peppered in your test, by all means use the time to get to know us!)
+* 10 minutes of questions (these can also be peppered into your pairing session, by all means use the time to get to know us!)
 
 ## Setup
-Theoretically `bin/setup` will get you most of the way there assuming you're using a machine currently configured with Rails/Ruby. However, to get completely setup you might need a few things:
+Theoretically `bin/setup` will get you most of the way there assuming you're using a machine currently configured with 
+Rails/Ruby. However, to get completely setup you might need a few things:
 
 1. Install [homebrew](https://brew.sh/) by running this command, this also installs xcode command line tools:
 ```
@@ -42,7 +43,7 @@ Theoretically `bin/setup` will get you most of the way there assuming you're usi
 
 2. Use Homebrew to install your Ruby Version manager (if you don't already have one)
 
-
+We use asdf, but some members use `rbenv` and `rvm`.
 [asdf](https://asdf-vm.com/guide/getting-started.html):
 ```
 brew install asdf
@@ -68,7 +69,8 @@ brew install \
 
 
 4. Use Brew to install Postgres
-   You’ve got some options with Postgres. If you want an all inclusive package, do the following:
+
+You’ve got some options with Postgres. If you want an all inclusive package, do the following:
 
 ```
 brew install --cask postgres-unofficial
@@ -91,20 +93,21 @@ pg_isready
 bin/setup
 ```
 
-7. Run rails (Hopefully!)
+7. Run rails (Hopefully this has been painless!)
 ```
 rails s
 ```
 
 
 ----
-If you get stuck with *any* of the above, feel free to reach out! It's a side note but if there are issues (sometimes 
-there are!) bring them to the interview. A worthwhile exercise might just be troubleshooting your issues since this is supposed to mimic a dev experience :)
+If you get stuck with *any* of the above, feel free to reach out! It's a side note but if there are major issues (sometimes 
+there are!) bring them to the interview. A worthwhile exercise might just be troubleshooting your issues since this is 
+supposed to mimic a dev experience :)
 
 ## Interacting with the App
 
 Feel free to play around! But the thing we mostly want to see working as a good test is creating a message with 
-recipients
+recipients.
 
 Use whatever IDE/etc you're most comfortable with, but here's a sample cURL command for viewing all messages:
 ```
