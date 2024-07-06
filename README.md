@@ -8,7 +8,7 @@ opportunity to see what it's like to work together. Technical screens are hard t
 bias in them that generally hedges on the wrong things. We'd rather provide the candidate an opportunity to see if they 
 like us and vice versa.
 
-Bare with us, this will always be an evolving process! Long term goal is one test, but we're in the middle of the transition:)
+Bear with us, this will always be an evolving process! Long term goal is one test, but we're in the middle of the transition:)
 
 ## Problem Statement
 Some pre-knowledge!
