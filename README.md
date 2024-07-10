@@ -32,6 +32,10 @@ Format:
 * 10 minutes of questions (these can also be peppered into your pairing session, by all means use the time to get to know us!)
 
 ## Setup
+* Please ensure that you use an IDE that you are most comfortable with. We can also drive or provide an alternative if
+necessary
+* Ensure that screen sharing with Google Meet works, we can also use zoom if that is more comfortable
+
 Theoretically `bin/setup` will get you most of the way there assuming you're using a machine currently configured with 
 Rails/Ruby. However, to get completely setup you might need a few things:
 
