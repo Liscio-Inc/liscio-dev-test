@@ -132,6 +132,15 @@ curl -v \
 
 ```
 
+## Quick Note
+
+While we recognize AI tools such as ChatGPT are becoming more ubiquitous with people's day to day 
+and there is a solid argument to be made that using AI can be part of a normal workflow and should 
+be allowed since that is what we are trying to emulate - for the purposes of this interview we ask 
+that it not be used to generate code outside of basic IDE auto-fills. What we're testing is your ability 
+to think through and understand a problem. Thanks for your understanding.
+
+
 ## Resources
 
 Ruby Version Manager
@@ -156,3 +165,5 @@ Various Rails/Dev Resources
     * 3.1.6
 * Postgres Version
   * 1.5.6
+ 
+
